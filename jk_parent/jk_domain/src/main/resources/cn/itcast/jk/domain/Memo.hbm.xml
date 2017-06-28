@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.itcast.jk.domain.Memo" table="MEMO" dynamic-insert="true" dynamic-update="true">
+		<id name="id" column="MEMO_ID">
+			<!--hibernate主键生成策略：native, increment,sequence,uuid,assigned,identity  -->
+			<generator class="uuid"/>
+		</id>
+		<property name="remark" column="REMARK"/>
+		<property name="state" column="STATE"/>
+		<property name="updatetime" column="UPDATETIME"/>
+		
+		<many-to-one name="user" class="cn.itcast.jk.domain.User" column="USER_ID"/>
+		<many-to-one name="memoBg" class="cn.itcast.jk.domain.MemoBg" column="MEMO_PIC_BG_ID"/>
+		<many-to-one name="memoIcon" class="cn.itcast.jk.domain.MemoIcon" column="MEMO_PIC_ICON_ID"/>
+		
+	</class>
+</hibernate-mapping>

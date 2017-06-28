@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="baseinfo" namespace="/baseinfo" extends="default">
+	   <action name="factoryAction_*" class="factoryAction" method="{1}">
+	        <result name="page">/WEB-INF/pages/baseinfo/factorylist.jsp</result>
+		    <result name="factory_toview">/WEB-INF/pages/baseinfo/factoryView.jsp</result>
+		    <result name="factory_tocreate">/WEB-INF/pages/baseinfo/factoryCreate.jsp</result>
+		    <result name="factory_toupdate">/WEB-INF/pages/baseinfo/factoryUpdate.jsp</result>
+		    <result name="success" type="redirectAction">factoryAction_list</result>
+	   </action>
+	   
+	   <action name="logAction_*" class="logAction" method="{1}">
+	        <result name="page">/WEB-INF/pages/baseinfo/logList.jsp</result>
+		    
+	   </action>
+	</package>
+</struts>
+	

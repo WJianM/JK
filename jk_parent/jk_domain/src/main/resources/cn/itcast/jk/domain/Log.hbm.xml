@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="cn.itcast.jk.domain">
+	<class name="Log" table="LOGIN_LOG_P" dynamic-insert="true" dynamic-update="true">
+		<id name="id" column="LOGIN_LOG_ID" type="string">
+			<!-- <generator class="uuid"/> -->
+		</id>
+		<property name="name" column="LOGIN_NAME"/>
+		<property name="address" column="IP_ADDRESS"/>
+		<property name="time" column="LOGIN_TIME"/>
+		
+	</class>
+
+</hibernate-mapping>

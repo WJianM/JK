@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.itcast.jk.domain.MemoIcon" table="MEMO_PIC_ICON" dynamic-insert="true" dynamic-update="true">
+		<id name="id" column="MEMO_PIC_ICON_ID">
+			<!--hibernate主键生成策略：native, increment,sequence,uuid,assigned,identity  -->
+			<generator class="uuid"/>
+		</id>
+		<property name="iconpath" column="ICON_PATH"/>
+		
+	</class>
+</hibernate-mapping>

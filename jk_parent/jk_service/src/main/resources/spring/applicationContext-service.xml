@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans    
+	http://www.springframework.org/schema/beans/spring-beans.xsd    
+	http://www.springframework.org/schema/aop    
+	http://www.springframework.org/schema/aop/spring-aop.xsd    
+	http://www.springframework.org/schema/tx    
+	http://www.springframework.org/schema/tx/spring-tx.xsd    
+	http://www.springframework.org/schema/context    
+	http://www.springframework.org/schema/context/spring-context.xsd">
+	<bean id="deptService" class="cn.itcast.jk.service.impl.DeptServiceImpl">
+		<property name="baseDao" ref="baseDao"></property>
+	</bean>
+	<bean id="userService" class="cn.itcast.jk.service.impl.UserServiceImpl">
+		<property name="baseDao" ref="baseDao"></property>
+		<property name="mailMessage" ref="mailMessage"></property>
+		<property name="mailSender" ref="mailSender"></property>
+	</bean>
+	<bean id="roleService" class="cn.itcast.jk.service.impl.RoleServiceImpl">
+		<property name="baseDao" ref="baseDao"></property>
+	</bean>
+	<bean id="moduleService" class="cn.itcast.jk.service.impl.ModuleServiceImpl">
+		<property name="baseDao" ref="baseDao"></property>
+	</bean>
+	<!-- 购销合同 -->
+	<bean id="contractService" class="cn.itcast.jk.service.impl.ContractServiceImpl">
+		<property name="baseDao" ref="baseDao"></property>
+	</bean>
+	<!--货物 -->
+	<bean id="contractProductService" class="cn.itcast.jk.service.impl.ContractProductServiceImpl">
+		<property name="baseDao" ref="baseDao"></property>
+	</bean>
+	<!-- 生产厂家 -->
+	<bean id="factoryService" class="cn.itcast.jk.service.impl.FactoryServiceImpl">
+		<property name="baseDao" ref="baseDao"></property>
+	</bean>
+	<!-- 附件 extCproductService -->
+	<bean id="extCproductService" class="cn.itcast.jk.service.impl.ExtCproductServiceImpl">
+		<property name="baseDao" ref="baseDao"></property>
+	</bean>
+	<!-- 报运单  exportService-->
+	<bean id="exportService" class="cn.itcast.jk.service.impl.ExportServiceImpl">
+		<property name="baseDao" ref="baseDao"></property>
+	</bean>
+	<!--  搬运单内附件表 ExtEproductService-->
+	<bean id="extEproductService" class="cn.itcast.jk.service.impl.ExportProductServiceImpl">
+		<property name="baseDao" ref="baseDao"></property>
+	</bean>
+	
+	<!-- 财务报运单 FinanceService -->
+	<bean id="financeService" class="cn.itcast.jk.service.impl.FinanceServiceImpl">
+		<property name="baseDao" ref="baseDao"/>
+	</bean>
+	
+	<!-- 商品明细  ExportProductService-->
+	<bean id="exportProductService" class="cn.itcast.jk.service.impl.ExportProductServiceImpl">
+		<property name="baseDao" ref="baseDao"></property>
+	</bean>
+	<!-- amchart 报表 -->
+	<bean id="sqlService" class="cn.itcast.jk.service.impl.SqlServiceImpl">
+		<property name="sqlDao" ref="sqlDao"></property>
+	</bean>
+	<bean id="packingListService" class="cn.itcast.jk.service.impl.PackingListServiceImpl">
+		<property name="baseDao" ref="baseDao"></property>
+	</bean>
+	<!-- 发票 -->
+	<bean id="invoiceService" class="cn.itcast.jk.service.impl.InvoiceServiceImpl">
+		<property name="baseDao" ref="baseDao"/>
+	</bean>
+	
+
+	<bean id="feedbackService" class="cn.itcast.jk.service.impl.FeedbackServiceImpl">
+		<property name="mailMessage" ref="mailMessage"></property>
+		<property name="mailSender" ref="mailSender"></property>
+	</bean>
+	
+	<!-- 日志service -->
+	<bean id="logService" class="cn.itcast.jk.service.impl.LogServiceImpl">
+		<property name="baseDao" ref="baseDao"></property>
+	</bean>
+	
+	<!--委托单  -->
+	<bean id="shippingOrderService" class="cn.itcast.jk.service.impl.ShippingOrderServiceImpl">
+		<property name="baseDao" ref="baseDao"/>
+	</bean>
+	
+
+	<!-- 留言板 -->
+	<bean id="messageService" class="cn.itcast.jk.service.impl.MessageServiceImpl">
+		<property name="baseDao" ref="baseDao"/>
+	</bean>
+
+	<!-- 备忘录 -->
+	<bean id="memoService" class="cn.itcast.jk.service.impl.MemoServiceImpl">
+		<property name="baseDao" ref="baseDao"/>
+	</bean>
+	<bean id="memoBgService" class="cn.itcast.jk.service.impl.MemoBgServiceImpl">
+		<property name="baseDao" ref="baseDao"/>
+	</bean>
+	<bean id="memoIconService" class="cn.itcast.jk.service.impl.MemoIconServiceImpl">
+		<property name="baseDao" ref="baseDao"/>
+	</bean>
+	
+	<!-- 任务列表 -->
+	<bean id="assignmentService" class="cn.itcast.jk.service.impl.AssignmentServiceImpl">
+		<property name="baseDao" ref="baseDao"/>
+	</bean>
+	
+	<!-- 快捷菜单 -->
+	<bean id="fastmenuService" class="cn.itcast.jk.service.impl.FastmenuServiceImpl">
+		<property name="baseDao" ref="baseDao"/>
+	</bean>
+	<!-- 自定义菜单 -->
+	<bean id="mymenuService" class="cn.itcast.jk.service.impl.MymenuServiceImpl">
+		<property name="baseDao" ref="baseDao"/>
+	</bean>
+	
+
+</beans>

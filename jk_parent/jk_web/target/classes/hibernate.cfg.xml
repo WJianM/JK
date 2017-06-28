@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+
+		<!-- 数据库的方言是hibernate -->
+		<property name="dialect">org.hibernate.dialect.Oracle10gDialect</property>
+
+		<!-- 可选的配置 -->
+		<!-- 显示SQL语句 -->
+		<property name="show_sql">true</property>
+		<!-- 格式化SQL语句 -->
+		<property name="format_sql">true</property>
+		<!-- 生成数据库的表结构，编写none，不要生成，正常做开发，都是把表创建好，不要自动生成表 -->
+		<property name="hbm2ddl.auto">none</property>
+		<!-- 懒加载，配合web.xml中配置的 openSessionInViewFilter -->
+		<property name="hibernate.enable_lazy_load_no_trans">true</property>
+		<!--校验模式 JPA java persistent api -->
+		<property name="javax.persistence.validation.mode">none</property>
+
+		<!-- 加载映射文件 -->
+		<mapping resource="cn/itcast/jk/domain/Dept.hbm.xml"></mapping>
+		<mapping resource="cn/itcast/jk/domain/User.hbm.xml"></mapping>
+		<mapping resource="cn/itcast/jk/domain/Role.hbm.xml"></mapping>
+		<mapping resource="cn/itcast/jk/domain/UserInfo.hbm.xml"></mapping>
+		<mapping resource="cn/itcast/jk/domain/Module.hbm.xml"></mapping>
+		<!--购销合通相关映射 -->
+		<mapping resource="cn/itcast/jk/domain/Contract.hbm.xml"></mapping>
+		<mapping resource="cn/itcast/jk/domain/ContractProduct.hbm.xml"></mapping>
+		<mapping resource="cn/itcast/jk/domain/ExtCproduct.hbm.xml"></mapping>
+		<mapping resource="cn/itcast/jk/domain/Factory.hbm.xml"></mapping>
+		<!--报运单相关映射  -->
+		<mapping resource="cn/itcast/jk/domain/Export.hbm.xml"></mapping>
+		<mapping resource="cn/itcast/jk/domain/ExportProduct.hbm.xml"></mapping>
+		<mapping resource="cn/itcast/jk/domain/ExtEproduct.hbm.xml"></mapping>
+		<mapping resource="cn/itcast/jk/domain/PackingList.hbm.xml"/>
+
+		<!-- 发票 -->
+		<mapping resource="cn/itcast/jk/domain/Invoice.hbm.xml"/>
+		
+		<!-- log日志 -->
+		<mapping resource="cn/itcast/jk/domain/Log.hbm.xml"/>
+		
+		<!--财务相关映射  -->
+		<mapping resource="cn/itcast/jk/domain/Finance.hbm.xml"/>
+		
+		<!-- 备忘录相关映射 -->
+		<mapping resource="cn/itcast/jk/domain/MemoIcon.hbm.xml"/>
+		<mapping resource="cn/itcast/jk/domain/MemoBg.hbm.xml"/>
+		<mapping resource="cn/itcast/jk/domain/Memo.hbm.xml"/>
+		<!-- 留言板 -->
+
+		<!-- <mapping resource="cn/itcast/jk/domain/Message.hbm.xml"/> -->
+		<mapping resource="cn/itcast/jk/domain/Message.hbm.xml"/>
+	    <mapping resource="cn/itcast/jk/domain/Message.hbm.xml"/>
+	
+		<!--委托单  -->
+		<mapping resource="cn/itcast/jk/domain/ShippingOrder.hbm.xml"/>
+		
+		<!-- 任务清单 -->
+		<mapping resource="cn/itcast/jk/domain/Assignment.hbm.xml"/>
+		
+		<!-- 快捷菜单 -->
+		<mapping resource="cn/itcast/jk/domain/Fastmenu.hbm.xml"/>
+		<!-- 自定义菜单 -->
+		<mapping resource="cn/itcast/jk/domain/Mymenu.hbm.xml"/>
+
+	</session-factory>
+</hibernate-configuration>

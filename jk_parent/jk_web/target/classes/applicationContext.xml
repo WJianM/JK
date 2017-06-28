@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans    
+	http://www.springframework.org/schema/beans/spring-beans.xsd    
+	http://www.springframework.org/schema/aop    
+	http://www.springframework.org/schema/aop/spring-aop.xsd    
+	http://www.springframework.org/schema/tx    
+	http://www.springframework.org/schema/tx/spring-tx.xsd    
+	http://www.springframework.org/schema/context    
+	http://www.springframework.org/schema/context/spring-context.xsd">
+	<!-- C3P0的连接池 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="oracle.jdbc.driver.OracleDriver" />
+		<property name="jdbcUrl" value="jdbc:oracle:thin:@192.168.122.220:1521:orcl" />
+		<property name="user" value="heima09" />
+		<property name="password" value="heima09" />
+	</bean>
+	
+	<!-- 整合hibernate，构建SessionFactory对象 -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="configLocation" value="classpath:hibernate.cfg.xml"></property>
+	</bean>
+	
+	<!--Shiro安全框架产生代理子类的方式： 使用cglib方式 
+	<aop:aspectj-autoproxy proxy-target-class="true" />
+	-->
+    <!--配置"jdbcTemplate"  -->
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+	
+	<!-- 配置事务管理器 -->
+	<bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	
+	<!-- 配置监听器 -->
+	<bean id="menufilter" class="cn.itcast.jk.filter.menufilter">
+		<property name="moduleService" ref="moduleService"></property>
+		<property name="fastmenuService" ref="fastmenuService"></property>
+		
+	</bean>
+	
+	
+	<!-- 配置事务的通知 -->
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="save*" propagation="REQUIRED" />
+			<tx:method name="insert*" propagation="REQUIRED" />
+			<tx:method name="update*" propagation="REQUIRED" />
+			<tx:method name="delete*" propagation="REQUIRED" />
+			
+			<tx:method name="get*" read-only="true" />
+			<tx:method name="*" propagation="REQUIRED" />
+		</tx:attributes>
+	</tx:advice>
+	
+	<!-- 配置事务AOP -->
+	<aop:config>
+		<aop:pointcut id="pointcut" expression="execution(* cn.itcast.jk.service.*.*(..))" />
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="pointcut" />
+	</aop:config>
+	
+	<!--组装其它 配置文件 -->
+	<import resource="classpath:spring/applicationContext-action.xml"></import>
+	<import resource="classpath:spring/applicationContext-service.xml"></import>
+	<import resource="classpath:spring/applicationContext-dao.xml"></import>
+	<import resource="classpath:spring/applicationContext-shiro.xml"></import>
+	<import resource="classpath:spring/applicationContext-email.xml"></import>
+	<import resource="classpath:spring/applicationContext-cxf.xml"></import>
+	<!--  <import resource="classpath:spring/applicationContext-job.xml"></import> -->
+	
+</beans>

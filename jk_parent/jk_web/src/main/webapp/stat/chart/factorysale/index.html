@@ -1,0 +1,30 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
+<meta http-equiv="expires" content="Wed, 26 Feb 1997 08:21:57 GMT">
+<title>Pie & Donut chart</title>
+</head>
+
+<body style="text-align:center;vertical-align:middle;">
+<div style="margin-top:-35px;">
+<!-- ampie script-->
+  <script type="text/javascript" src="../../../components/chart/ampie_1.6.4.1/ampie/swfobject.js"></script>
+	<div id="flashcontent">
+		<strong>You need to upgrade your Flash Player</strong>
+	</div>
+
+	<script type="text/javascript">
+		// <![CDATA[		
+		var so = new SWFObject("../../../components/chart/ampie_1.6.4.1/ampie/ampie.swf", "ampie", "660", "400", "8", "#FFFFFF");
+		so.addVariable("path", "../../../components/chart/ampie_1.6.4.1/ampie");
+		so.addVariable("settings_file", encodeURIComponent("ampie_settings.xml"));  
+		so.addVariable("data_file", encodeURIComponent("data.xml"));
+		so.write("flashcontent");
+		// ]]>
+	</script>
+<!-- end of ampie script -->
+</div>
+</body>
+</html>

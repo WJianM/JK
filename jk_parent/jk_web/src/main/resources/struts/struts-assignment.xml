@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="assignment" namespace="/assignment" extends="default">
+	   <action name="assignmentAction_*" method="{1}" class="assignmentAction">
+			<result name="alist" type="redirect">assignmentAction_list</result>
+			<result name="plist">/WEB-INF/pages/assignment/jAssignmentList.jsp</result>
+			<result name="pcreate">/WEB-INF/pages/assignment/jAssignmentCreate.jsp</result>
+			<result name="pupdate">/WEB-INF/pages/assignment/jAssignmentUpdate.jsp</result>
+			<result name="pview">/WEB-INF/pages/assignment/jAssignmentView.jsp</result>
+			<result name="mymennucreate">/WEB-INF/pages/assignment/jMymenuCreate.jsp</result>
+			<result name="insertmymenu">/WEB-INF/pages/home/memolist.jsp</result>
+		</action>
+	</package>
+</struts>
+	

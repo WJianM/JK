@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<package name="dept" namespace="/sysadmin" extends="default">
+		<action name="deptAction_*" class="deptAction" method="{1}">
+			<result name="dept_list">/WEB-INF/pages/sysadmin/dept/jDeptList.jsp
+			</result>
+			<result name="dept_toview">/WEB-INF/pages/sysadmin/dept/jDeptView.jsp
+			</result>
+			<result name="dept_tocreate">/WEB-INF/pages/sysadmin/dept/jDeptCreate.jsp
+			</result>
+			<!-- <result name="dept_insert" type="redirectAction">deptAction_list</result> -->
+			<result name="dept_toupdate">/WEB-INF/pages/sysadmin/dept/jDeptUpdate.jsp
+			</result>
+			<result name="dept_update" type="redirectAction">deptAction_list</result>
+			<result name="dept_delete" type="redirectAction">deptAction_list</result>
+		</action>
+		<!-- userAction 用户模块 -->
+		<action name="userAction_*" class="userAction" method="{1}">
+			<result name="user_list">/WEB-INF/pages/sysadmin/user/jUserList.jsp</result>
+			<result name="user_tocreate">/WEB-INF/pages/sysadmin/user/jUserCreate.jsp</result>
+			<result name="success" type="redirectAction">userAction_list</result>
+			<result name="user_toview">/WEB-INF/pages/sysadmin/user/jUserView.jsp</result>
+			<result name="user_toupdate">/WEB-INF/pages/sysadmin/user/jUserUpdate.jsp</result>
+			<result name="user_torole">/WEB-INF/pages/sysadmin/user/jUserRole.jsp</result>
+		</action>
+		<!--roleAction_list 角色模块  -->
+		<action name="roleAction_*" class="roleAction" method="{1}">
+		    <result name="role_list">/WEB-INF/pages/sysadmin/role/jRoleList.jsp</result>
+		    <result name="role_toview">/WEB-INF/pages/sysadmin/role/jRoleView.jsp</result>
+		    <result name="role_tocreate">/WEB-INF/pages/sysadmin/role/jRoleCreate.jsp</result>
+		    <result name="success" type="redirectAction">roleAction_list</result>
+		    <result name="role_toupdate">/WEB-INF/pages/sysadmin/role/jRoleUpdate.jsp</result>
+		    <result name="role_tomodule">/WEB-INF/pages/sysadmin/role/jRoleModule.jsp</result>
+		</action>
+		<!-- moduleAction_list 菜单模块 -->
+		<action name="moduleAction_*" class="moduleAction" method="{1}">
+		    <result name="module_list">/WEB-INF/pages/sysadmin/module/jModuleList.jsp</result>
+		    <result name="module_toview">/WEB-INF/pages/sysadmin/module/jModuleView.jsp</result>
+		    <result name="module_tocreate">/WEB-INF/pages/sysadmin/module/jModuleCreate.jsp</result>
+		    <result name="success" type="redirectAction">moduleAction_list</result>
+		    <result name="module_toupdate">/WEB-INF/pages/sysadmin/module/jModuleUpdate.jsp</result>
+		</action>
+	</package>
+
+</struts>
+	

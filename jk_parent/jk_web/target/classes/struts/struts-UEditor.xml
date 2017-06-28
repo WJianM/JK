@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<!--statChartAction_factorysale 统计模块 -->
+	<package name="UEditor" extends="default" namespace="/ueditor">
+		<action name="tomainAction_*" class="tomainAction" method="{1}">
+			<result name="toUEditor">/WEB-INF/pages/UEditor/ueditor.jsp</result>
+			<result name="submit" type="redirectAction">tomainAction_toUEditor</result>
+			<result name="submit1" type="redirectAction">tomainAction_toUEditor2</result>
+			<result name="toUEditor2">/WEB-INF/pages/UEditor/qyw.jsp</result>
+		</action>
+	</package>
+</struts>
+	

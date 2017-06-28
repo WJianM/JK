@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="cn.itcast.jk.domain">
+	<!-- 配置类的映射 -->
+	<class name="Assignment" table="ASSIGNMENT_t">
+		<!-- 1.配置主键生成策略 -->
+		<id name="id" column="ID" type="string">
+			<generator class="uuid"/>
+		</id>
+		
+		<!-- 2.配置其他属性 -->
+		<property name="userid" column="USERID" type="string"/>
+		<property name="content" column="CONTENT" type="string"/>
+		<property name="overtime" column="OVERTIME" type="date"/>
+		<property name="state" column="STATE" type="double"/>
+		<property name="senderids" column="SENDERIDS" type="string"/>
+		<property name="username" column="USERNAME" type="string"/>
+
+	</class>
+
+</hibernate-mapping>

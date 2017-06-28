@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<constant name="struts.ui.theme" value="simple" />
+	<constant name="struts.devMode" value="true" />
+	<package  name="default" namespace="/" extends="struts-default">
+		<interceptors>
+			<interceptor name="loginInterceptor"  class="menufilter"></interceptor>
+			
+			<!-- 拦截器栈 -->
+			<interceptor-stack name="lintercetor">
+				<interceptor-ref name="loginInterceptor">
+				</interceptor-ref>
+				<interceptor-ref name="defaultStack">
+				</interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="lintercetor"></default-interceptor-ref>
+
+
+		<!-- -->
+		<!--全局结果视图 -->
+		<global-results>
+			<result name="error">/WEB-INF/pages/error.jsp</result>
+		</global-results>
+		<global-exception-mappings>
+			<exception-mapping result="error" exception="cn.itcast.jk.exception.SysException"></exception-mapping>
+			<exception-mapping result="error" exception="java.lang.Exception"></exception-mapping>
+		</global-exception-mappings>
+
+		<action name="login" method="login" class="loginAction">
+			<result name="login">/WEB-INF/pages/sysadmin/login/login.jsp</result>
+			<result name="success">/WEB-INF/pages/home/fmain.jsp</result>
+		</action>
+		<action name="logout" method="logout" class="loginAction">
+			<result name="logout">/WEB-INF/pages/sysadmin/login/logout.jsp</result>
+		</action>
+
+		<action name="homeAction_*" method="{1}" class="homeAction">
+		
+			<result name="fmain">/WEB-INF/pages/home/fmain.jsp</result>
+			<result name="title">/WEB-INF/pages/home/title.jsp</result>
+			<result name="toleft">/WEB-INF/pages/${moduleName}/left.jsp</result>
+			<result name="tomain">/WEB-INF/pages/${moduleName}/main.jsp</result>
+			<result name="PersonalInfo">/WEB-INF/pages/home/personal_info.jsp</result>
+			<result name="SystemFeedback">/WEB-INF/pages/home/system_feedback.jsp</result>
+			<result name="memolist">/WEB-INF/pages/home/memolist.jsp</result>
+			<result name="tocreatememo">/WEB-INF/pages/home/memoCreate.jsp</result>
+			<result name="success" type="redirectAction">homeAction_memolist</result>
+			<result name="toupdatememo">/WEB-INF/pages/home/memoUpdate.jsp</result>
+			<result name="showmemo">/WEB-INF/pages/home/memoHistory.jsp</result>
+			<result name="deletesuccess" type="redirectAction">homeAction_showmemo</result>
+		</action>
+
+
+		<action name="feedbackAction_*" method="{1}" class="feedbackAction">
+			<result name="tocreate">/WEB-INF/pages/feedback.jsp</result>
+			<result name="success">/WEB-INF/pages/feedbacksuccess.jsp</result>
+		</action>
+
+	</package>
+
+	<!-- 分模块开发 -->
+	<include file="struts/struts-sysadmin.xml"></include>
+	<include file="struts/struts-cargo.xml"></include>
+	<include file="struts/struts-stat.xml"></include>
+
+	<include file="struts/struts-baseinfo.xml"></include>
+	<include file="struts/struts-UEditor.xml"></include>
+	<include file="struts/struts-assignment.xml"></include>
+</struts>
+	

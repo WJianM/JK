@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.itcast.jk.domain.User" table="USER_P" dynamic-insert="true" dynamic-update="true">
+		<id name="id" column="USER_ID">
+			<!--hibernate主键生成策略：native, increment,sequence,uuid,assigned,identity  -->
+			<generator class="assigned"/>
+		</id>
+		<property name="userName" column="USER_NAME"/>
+		<property name="password" column="PASSWORD"/>
+		<property name="state" column="STATE"/>
+		<property name="createBy" column="CREATE_BY"/>
+		<property name="createDept" column="CREATE_DEPT"/>
+		<property name="createTime" column="CREATE_TIME"/>
+		<property name="updateBy" column="UPDATE_BY"/>
+		<property name="updateTime" column="UPDATE_TIME"/>
+		
+		
+		<!-- 与部门是多对一 -->
+		<many-to-one name="dept" class="cn.itcast.jk.domain.Dept" column="DEPT_ID"></many-to-one>
+		
+		<!-- 一对一，配置cascade="all"，级联操作，记住：以后操作User，根据级联操作默认就可以保持用户扩展信息数据 -->
+		<one-to-one name="userInfo" class="cn.itcast.jk.domain.UserInfo" cascade="all"></one-to-one>
+		
+		<!-- 与角色的多对多 -->
+		<set name="roles" table="ROLE_USER_P">
+		   <key column="USER_ID"></key>
+		   <many-to-many class="cn.itcast.jk.domain.Role" column="ROLE_ID"></many-to-many>
+		</set>
+	</class>
+</hibernate-mapping>

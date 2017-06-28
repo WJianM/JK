@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<!--statChartAction_factorysale 统计模块 -->
+	<package name="stat" extends="default" namespace="/stat">
+		<action name="statChartAction_*" class="statChartAction"
+			method="{1}">
+			<!-- <result name="factorysale">/WEB-INF/pages/stat/chart/jStat.jsp?forward=factorysale</result> -->
+			<result name="factorysale">/WEB-INF/pages/stat/factorysale/factorysale.jsp
+			</result>
+			<result name="productsale">/WEB-INF/pages/stat/chart/jStat.jsp?forward=productsale
+			</result>
+			<!-- <result name="productsale">/WEB-INF/pages/stat/productsale/productsale.jsp</result> -->
+			<result name="onlineinfo">/WEB-INF/pages/stat/chart/jStat.jsp?forward=onlineinfo
+			</result>
+			<!-- <result name="onlineinfo">/WEB-INF/pages/stat/onlineinfo/onlineinfo.jsp</result> -->
+		</action>
+	</package>
+</struts>
+	

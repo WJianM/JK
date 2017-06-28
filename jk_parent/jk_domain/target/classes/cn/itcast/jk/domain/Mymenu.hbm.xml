@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="cn.itcast.jk.domain">
+	<!-- 配置类的映射 -->
+	<class name="Mymenu" table="MYMENU">
+		<!-- 1.配置主键生成策略 -->
+		<id name="id" column="ID">
+			<generator class="uuid"/>
+		</id>
+		<!-- 2.配置其他属性 -->
+		<property name="userid" column="USERID" type="string"/>
+		<property name="menuname" column="MENUNAME" type="string"/>
+		<property name="murl" column="MURL" type="string"/>
+		<property name="sort" column="SORT" type="double"/>
+
+	</class>
+
+</hibernate-mapping>

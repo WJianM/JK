@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="cn.itcast.jk.domain">
+	<!-- 配置类的映射 -->
+	<class name="Message" table="MESSAGE">
+		<!-- 1.配置主键生成策略 -->
+		<id name="id" column="ID">
+			<generator class="uuid"></generator>
+		</id>
+		<!-- 2.配置其他属性 -->
+		<property name="fromusername" column="FROMUSERNAME" type="string"/>
+		<property name="fromuserid" column="FROMUSERID" type="string"/>
+		<property name="touserid" column="TOUSERID" type="string"/>
+		<property name="tousername" column="TOUSERNAME" type="string"/>
+		<property name="content" column="CONTENT" type="string"/>
+		<property name="messagetime" column="MESSAGETIME" type="date"/>
+
+	</class>
+
+</hibernate-mapping>
